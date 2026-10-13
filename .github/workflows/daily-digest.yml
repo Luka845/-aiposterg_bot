@@ -2,11 +2,8 @@ name: Daily Telegram Digest
 
 on:
   schedule:
-    - cron: '15 5 * * *'
+    - cron: '0 5 * * *'
   workflow_dispatch:
-
-permissions:
-  contents: read
 
 jobs:
   publish:
@@ -21,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Publish digest
+      - name: Publish to Telegram
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
